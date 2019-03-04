@@ -6,6 +6,9 @@ services:
     volumes:
       - .:/code
     ports:
-    - "5000:5000"
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    restart: always
 
 

@@ -7,6 +7,13 @@ WORKDIR /code
 COPY ./requirements.txt /code
 RUN pip install -r requirements.txt
 
+# install bash
+RUN apk update && apk add bash
+
+# add entrypoint.sh
+COPY ./entrypoint.sh /code/entrypoint.sh
+RUN chmod +x /code/entrypoint.sh
+
 COPY . /code
 
-CMD ["python", "manage.py"]
+CMD ./entrypoint.sh
